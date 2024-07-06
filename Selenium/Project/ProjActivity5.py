@@ -4,9 +4,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 
-#Verify the website’s second heading
-#Goal: Read the second heading of the website and verify the text
-
 # Set up the Firefox Driver with WebDriverManger
 service = FirefoxService(GeckoDriverManager().install())
 # Start the Driver
