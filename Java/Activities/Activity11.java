@@ -1,31 +1,38 @@
 package activities;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Activity11 {
-    public static void main(String[] args) {
-    //Create a Map named colours with integer keys and String values.
-    Map<Integer, String> colors = new HashMap<Integer, String>();
-    //Add 5 random colours to it and print the Map to the console.
-    colors.put(1, "Blue");
-    colors.put(2, "Yellow");
-    colors.put(3, "Green");
-    colors.put(4, "Orange");
-    colors.put(5, "Purple");
-    System.out.println("The Original map: " + colors);
-    //Original Map Size
-    System.out.println("Original Map Size is: " + colors.size());
-    //Remove one colour using the remove() method.
-    colors.remove(2);
-    //Check if the colour green exists in the Map using the containsValue() method.
-    if(colors.containsValue("Green")) {
-        System.out.println("Green exists in the Map");
-    } else {
-        System.out.println("Green does not exist in the Map");
-    }
-    //Print the size of the Map using the size() method.
-    System.out.println("Map Size is: " + colors.size());
-    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			//Set up GeckoDriver
+				WebDriverManager.firefoxdriver().setup();
+			//Initialize the Driver
+				WebDriver driver = new FirefoxDriver();
+				//Open Browser
+				driver.get("https://v1.training-support.net/selenium/dynamic-controls");
+			//Page Title
+				String Title = driver.getTitle();
+				System.out.println("Page Title is: "+ Title);
+			//Find the checkbox input element.
+				WebElement checkBox = driver.findElement(By.cssSelector("input.willDisappear"));
+				checkBox.click();
+			//Check if the checkbox is selected and print the result.
+				System.out.println("Checkbox is selected: " + checkBox.isSelected());
+			//Click the checkbox to select it.
+				checkBox.click();
+			//Check if the checkbox is selected again and print the result.
+				System.out.println("Checkbox is selected: " + checkBox.isSelected());
+			//Close browser
+				driver.quit();
+	}
 
 }
